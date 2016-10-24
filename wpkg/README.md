@@ -4,11 +4,11 @@
 
 ## Liens utiles
 
-- [https://wpkg.org/](wpkg.org) :
-    [https://wpkg.org/Download](Download),
-    [https://wpkg.org/Category:Silent_Installers](Silent Installers)
-- [http://wpkg.ac-creteil.fr/](wpkg.ac-creteil.fr)
-- [http://wpkg-users.wpkg.narkive.com/oXCMUddm/silently-drop-a-package](Silently drop a package)
+- [wpkg.org](https://wpkg.org/) :
+    [Download](https://wpkg.org/Download),
+    [Silent Installers](https://wpkg.org/Category:Silent_Installers)
+- [wpkg.ac-creteil.fr](http://wpkg.ac-creteil.fr/)
+- [Silently drop a package](http://wpkg-users.wpkg.narkive.com/oXCMUddm/silently-drop-a-package)
 
 ## En ligne de commandes
 
