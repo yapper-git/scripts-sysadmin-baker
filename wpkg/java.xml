@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="java"
+        name="Java Runtime Environment 8"
+        revision="%version%"
+        reboot="false"
+        priority="20">
+
+        <variable name="updatever" value="08" />
+        <variable name="shortupdatever" value="111" />
+        <variable name="prevshortupdatever" value="111" /> <!--Previous Version-->
+        <variable name="version" value="8.0.%shortupdatever%" />
+
+        <check type="logical" condition="or">
+            <check type="uninstall" condition="exists" path="Java 8" />
+            <check type="uninstall" condition="exists" path="Java 8 Update %updatever%" />
+            <check type="uninstall" condition="exists" path="Java 8 Update %shortupdatever%" />
+            <check type="uninstall" condition="exists" path="{26A24AE4-039D-4CA4-87B4-2F32180%shortupdatever%F0}" />		
+        </check>
+
+        <install cmd='taskkill /f /im jqs.exe /im iexplore.exe /im firefox.exe'>
+            <exit code='any' />
+        </install>
+        <install cmd='msiexec /i %SOFTWARE%\java\jre1.8.0_%shortupdatever%.msi JU=0 JAVAUPDATE=0 AUTOUPDATECHECK=0 RebootYesNo=No WEB_JAVA=1 /q' >	
+            <exit code='any' />
+        </install>
+
+        <upgrade cmd='msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F32180%prevshortupdatever%F0}' /> <!--Remove previous Version-->
+ 
+        <remove cmd='msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F32180%shortupdatever%F0}' />
+ 
+        <!-- jre 64-bit install for 64-bit hosts only -->
+        <check architecture="x64" type="logical" condition="or">
+            <check type="uninstall" condition="exists" path="Java 8 (64-bit)" />
+            <check type="uninstall" condition="exists" path="Java 8 Update %updatever% (64-bit)" />
+            <check type="uninstall" condition="exists" path="Java 8 Update %shortupdatever% (64-bit)" />
+        <check type="uninstall" condition="exists" path="{26A24AE4-039D-4CA4-87B4-2F64180%shortupdatever%F0}" />
+        </check>
+ 
+        <install architecture="x64" cmd='taskkill /f /im jqs.exe /im iexplore.exe /im firefox.exe'>
+            <exit code='any' />
+        </install>
+        <install architecture="x64" cmd='msiexec /i %SOFTWARE%\java\jre1.8.0_%shortupdatever%_x64.msi JU=0 JAVAUPDATE=0 AUTOUPDATECHECK=0 RebootYesNo=No WEB_JAVA=1 /q'>
+            <exit code='any' />
+        </install>	
+
+        <!-- All architectures: remove Java Quick Starter -->
+         <install cmd='%COMSPEC% /C if exist "%PROGRAMFILES%\Java\jre1.8.0_%shortupdatever%\bin\jqs.exe" "%PROGRAMFILES%\Java\jre1.8.0_%shortupdatever\bin\jqs.exe" -unregister'>
+            <exit code='any' />
+        </install>
+        <install cmd='%COMSPEC% /C if exist "%PROGRAMFILES(x86)%\Java\jre1.8.0_%shortupdatever%\bin\jqs.exe" "%PROGRAMFILES(x86)%\Java\jre1.8.0_%shortupdatever\bin\jqs.exe" -unregister'>
+            <exit code='any' />
+        </install>
+ 
+        <!-- All architectures: remove Java Auto Update -->
+        <install cmd='REG DELETE HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v SunJavaUpdateSched /f'>
+            <exit code='any' />
+        </install>
+
+        <downgrade include="install" />
+
+        <upgrade architecture="x64" cmd='msiexec /qn /x {26A24AE4-039D-4CA4-87B4-2F64180%prevshortupdatever%F0}' /> <!--Remove previous Version-->
+        <upgrade include="install" />
+ 
+        <remove architecture="x64" cmd='msiexec /qn /x {26A24AE4-039D-4CA4-87B4-2F64180%shortupdatever%F0}' />
+    </package>
+
+</packages>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="audacity"
+        name="Audacity"
+        revision="%version%">
+
+        <variable name="version" value="2.1.2" />
+
+        <!--<depends package-id="vc-runtime-2008" />-->
+
+        <check type="uninstall" condition="exists" path="Audacity %version%" />
+
+        <install cmd='%SOFTWARE%\audacity\audacity-win-%version%.exe /sp- /verysilent /norestart' />
+
+        <upgrade include="install" />
+
+        <remove timeout="300" cmd='%PROGRAMFILES%\Audacity\unins000.exe /verysilent' architecture="x86" />
+        <remove timeout="300" cmd='%PROGRAMFILES(x86)%\Audacity\unins000.exe /verysilent' architecture="x64" />
+    </package>
+	
+</packages>

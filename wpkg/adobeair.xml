@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="adobeair"
+        name="Adobe AIR"
+        revision="%version%">
+
+        <variable name="version" value="23.0.0.257" />
+
+        <check type="uninstall" condition="versionequalto" path="Adobe AIR" value="%version%" />
+
+        <!-- The -eulaAccepted switch is optional, but prevents the user from having to accept Adobe's EULA when starting AIR for the first time. -->
+        <install cmd='"%SOFTWARE%\adobeair\AdobeAIRInstaller.exe" -silent -eulaAccepted' />
+        <!-- Disable Automatic Update -->
+        <install cmd='REG ADD "HKLM\SOFTWARE\Policies\Adobe\AIR" /v UpdateDisabled /d 1 /f /t REG_DWORD' />
+
+        <upgrade include="remove" />
+        <upgrade include="intall" />
+
+        <remove cmd='"%SOFTWARE%\adobeair\AdobeAIRInstaller.exe" -uninstall' />
+    </package>
+
+</packages>

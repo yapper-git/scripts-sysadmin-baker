@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="lame"
+        name="Lame"
+        revision="%version%">
+
+        <variable name="version" value="3.99.3" />
+
+        <check type="uninstall" condition="exists" path="LAME v%version%.*" />
+
+        <install cmd='%SOFTWARE%\lame\Lame_v%version%_for_Windows.exe /sp- /verysilent /norestart' />
+
+        <upgrade include="install" />
+
+        <remove timeout="300" cmd='%PROGRAMFILES%\Lame for Audacity\unins000.exe /verysilent' architecture="x86" />
+        <remove timeout="300" cmd='%PROGRAMFILES(x86)%\Lame for Audacity\unins000.exe /verysilent' architecture="x64" />
+    </package>
+	
+</packages>

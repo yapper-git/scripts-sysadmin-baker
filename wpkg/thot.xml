@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="thot"
+        name="Thot Equation solver"
+        revision="%version%-5">
+
+        <variable name="version" value="1.6.1" />
+        <variable name="MSI_VERSION" value="1.00.0000" />
+
+        <check type="uninstall" condition="versionequalto" path="Thot" value="%MSI_VERSION%" />
+
+        <install cmd='msiexec /qn /i %SOFTWARE%\thot\Thot.msi' />
+
+        <upgrade include="install" />
+
+        <remove cmd='msiexec /qn /x {EEB82240-4DBD-47C3-AC22-8A7504DEAC6E}' /> 
+    </package>
+
+</packages>

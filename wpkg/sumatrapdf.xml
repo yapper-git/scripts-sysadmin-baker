@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="sumatrapdf"
+        name="Sumatra PDF Reader"
+        revision="%version%">
+
+        <variable name="version" value="3.1.2" />
+
+        <check type="uninstall" condition="versionequalto" path="SumatraPDF" value="%version%" />
+
+        <!-- /register to link the PDF extension with SumatraPDF -->
+        <install cmd='"%SOFTWARE%\sumatrapdf\SumatraPDF-%VERSION%-install.exe"    /s /register' architecture="x86" />
+        <install cmd='"%SOFTWARE%\sumatrapdf\SumatraPDF-%VERSION%-64-install.exe" /s /register' architecture="x64" />
+
+        <upgrade include="install" />
+
+        <remove cmd='"%PROGRAMFILES%\SumatraPDF\uninstall.exe" /S' />
+    </package>
+
+</packages>

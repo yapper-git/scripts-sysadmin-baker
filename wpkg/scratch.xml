@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <!--
+        v447 :   {DA031E6D-F3C1-D28C-ABE2-B7592AAAE474}
+        v450.1 : {BA47DBB9-84AD-222A-D4B5-E86B4AE0B68F}
+        found using regedit in HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall
+    -->
+
+    <package
+        id="scratch"
+        name="Scratch"
+        revision="%version%">
+
+        <depends package-id="adobeair" />
+
+        <variable name="version" value="450.1" />
+
+        <check type="uninstall" condition="versionequalto" path="Scratch 2 Offline Editor" value="%version%" />
+
+        <install cmd='%SOFTWARE%\scratch\Scratch-%version%.exe -silent' />
+
+        <!-- WARNING : MUST REMOVE PREVIOUS VERSION TO UPGRADE -->
+        <upgrade cmd='msiexec /qb! /uninstall {DA031E6D-F3C1-D28C-ABE2-B7592AAAE474}'><exit code="any" /></upgrade><!-- v447 -->
+        <upgrade cmd='msiexec /qb! /uninstall {BA47DBB9-84AD-222A-D4B5-E86B4AE0B68F}'><exit code="any" /></upgrade><!-- v450.1 -->
+        <upgrade include="install" />
+
+        <remove cmd='msiexec /qb! /uninstall {BA47DBB9-84AD-222A-D4B5-E86B4AE0B68F}' />
+    </package>
+
+</packages>

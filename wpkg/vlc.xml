@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package 
+        id="vlc"
+        name="VideoLAN Client"
+        revision="%version%">
+
+        <variable name="version" value="2.2.4" />
+        <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\VideoLAN" />
+
+        <check type='uninstall' condition='versionequalto' path='VLC media player' value='%version%' />
+
+        <install cmd='%COMSPEC% /C start /wait "VLC" "%SOFTWARE%\vlc\vlc-%version%-win32.exe" /S /NCRC' architecture="x86" />
+        <install cmd='%COMSPEC% /C start /wait "VLC" "%SOFTWARE%\vlc\vlc-%version%-win64.exe" /S /NCRC' architecture="x64" />
+
+        <upgrade include="remove" />
+        <upgrade include="install" />
+
+        <remove cmd='%COMSPEC% /c if exist "%PKG_DESTINATION%\VLC\uninstall.exe" "%PKG_DESTINATION%\VLC\uninstall.exe" /S _?=%PKG_DESTINATION%\VLC' />
+        <remove cmd='%COMSPEC% /C if exist "%PKG_DESTINATION%" rmdir /S /Q "%PKG_DESTINATION%"' />
+    </package>
+
+</packages>

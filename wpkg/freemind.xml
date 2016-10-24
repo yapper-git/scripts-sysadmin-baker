@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="freemind"
+        name="FreeMind mind mapping software"
+        revision="%version%-2">
+
+        <variable name="version" value="1.0.1" />
+        <variable name="PKG_DESTINATION" value="%PROGRAMFILES%"      architecture="x86"/>
+        <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%" architecture="x64"/>
+
+        <depends package-id="java" />
+
+        <check type="uninstall" condition="versionequalto" path="FreeMind" value="%version%" />
+
+        <install cmd="%SOFTWARE%\freemind\FreeMind-Windows-Installer-%version%-max.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART" />
+
+        <upgrade include="install" />
+
+        <remove cmd="%PKG_DESTINATION%\FreeMind\unins000.exe /VERYSILENT" />
+    </package>
+
+</packages>

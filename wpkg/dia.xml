@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="dia"
+        name="Dia Diagram Editor"
+        revision="%version%">
+
+        <variable name="version"        value="0.97.2" />
+        <variable name="PKG_INSTDIR"    value="%PROGRAMFILES%\dia" architecture="x86" />
+        <variable name="PKG_INSTDIR"    value="%PROGRAMFILES(x86)%\dia" architecture="x64" />
+        <variable name="PKG_UNINSTALL"  value="%PKG_INSTDIR%\dia-%version%-uninstall.exe" />
+
+        <check type="file" condition="exists" path="%PKG_UNINSTALL%" />
+
+        <install cmd='"%SOFTWARE%\dia\dia-setup-%version%-2-unsigned.exe" /S' />
+
+        <upgrade include='install' />
+
+        <remove cmd='%PKG_UNINSTALL% /S' />
+        <remove cmd='%COMSPEC% /C rmdir /S /Q "%PKG_INSTDIR%"' />
+    </package>
+
+</packages>
