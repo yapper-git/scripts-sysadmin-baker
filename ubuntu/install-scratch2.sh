@@ -14,9 +14,6 @@ if [ "$UID" -ne "0" ]; then
     exit 1
 fi
 
-# Abort the script if any command returns a non-zero value
-set -e
-
 # Download the Adobe Air and Scratch files
 wget -O AdobeAIRInstaller.bin http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
 wget -O Scratch.air https://scratch.mit.edu/scratchr2/static/sa/Scratch-450.1.air
