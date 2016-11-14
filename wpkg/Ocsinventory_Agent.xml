@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id='Ocsinventory_Agent'
+        name='Agent OcsInventory'
+        revision='2.0.5.0'
+        priority='5'
+        reboot='false'>
+
+        <!-- adapter l ip du scribe -->
+        <check type='file' condition='versiongreaterorequal' path='%PROGRAMFILES(x86)%\OCS Inventory Agent\OCSInventory.exe' value='2.0.5.0' />
+        <install cmd='%SOFTWARE%\ocsinventory\OCS-NG-Windows-Agent-Setup.exe /S /NOSPLASH /NO_SYSTRAY /NOW /SERVER=http://10.93.200.252/ocsinventory' />
+        <upgrade cmd='%SOFTWARE%\ocsinventory\OCS-NG-Windows-Agent-Setup.exe /S /NOSPLASH /NO_SYSTRAY /SERVER=http://10.93.200.252/ocsinventory /UPGRADE' />
+        <remove cmd='"%PROGRAMFILES%\OCS Inventory Agent\uninst.exe" /S' />
+    </package>
+
+</packages>
