@@ -80,6 +80,7 @@ echo "Adresse du serveur Scribe = $ip_scribe"
 # Existe-t-il un proxy à paramétrer ?
 #####################################
 
+<<COMMENT
 read -p "Faut-il enregistrer l'utilisation d'un proxy ? [O/n] " rep_proxy
 if [ "$rep_proxy" = "O" ] || [ "$rep_proxy" = "o" ] || [ "$rep_proxy" = "" ] ; then
   read -p "Donnez l'adresse ip du proxy ? [$proxy_def_ip] " ip_proxy
@@ -94,11 +95,13 @@ else
   ip_proxy=""
   port_proxy=""
 fi
+COMMENT
 
 ###################################################
 # cron d'extinction automatique à lancer ?
 ###################################################
 
+<<COMMENT
 echo "Pour terminer, voulez vous activer l'extinction automatique des postes le soir ?"
 echo "0 = non, pas d'extinction automatique le soir"
 echo "1 = oui, extinction a 19H00"
@@ -113,6 +116,7 @@ elif [ "$rep_proghalt" = "2" ] ; then
 elif [ "$rep_proghalt" = "3" ] ; then
   echo "0 22 * * * root /sbin/shutdown -h now" > /etc/cron.d/prog_extinction
 fi
+COMMENT
 
 ########################################################################
 #rendre debconf silencieux
@@ -123,6 +127,7 @@ export DEBIAN_PRIORITY="critical"
 #######################################################
 #Paramétrage des paramètres Proxy pour tout le système
 #######################################################
+<<COMMENT
 if [[ "$ip_proxy" != "" ]] || [[ $port_proxy != "" ]] ; then
 
   echo "Paramétrage du proxy $ip_proxy:$port_proxy" 
@@ -161,10 +166,10 @@ Acquire::https::proxy \"https://$ip_proxy:$port_proxy/\";" > /etc/apt/apt.conf.d
   echo "Defaults env_keep = https_proxy" >> /etc/sudoers
 
 fi
-
+COMMENT
 
 # Vérification que le système est bien a jour
-apt-get update ; apt-get -y dist-upgrade
+#apt-get update ; apt-get -y dist-upgrade
 
 ########################################################################
 #Mettre la station à l'heure à partir du serveur Scribe
