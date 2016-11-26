@@ -7,4 +7,7 @@ if [ "$UID" -ne "0" ]; then
 fi
 
 read -p "Nom de la machine : " -e -i "$HOSTNAME" INPUT_HOSTNAME
+
 hostname $INPUT_HOSTNAME
+echo $INPUT_HOSTNAME > /etc/hostname
+sed -i "s/ghost/$INPUT_HOSTNAME/g" /etc/hosts
