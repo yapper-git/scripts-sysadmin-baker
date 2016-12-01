@@ -8,6 +8,6 @@ fi
 
 read -p "Nom de la machine : " -e -i "$HOSTNAME" INPUT_HOSTNAME
 
+sed -i "s/$HOSTNAME/$INPUT_HOSTNAME/g" /etc/hosts
 hostname $INPUT_HOSTNAME
 echo $INPUT_HOSTNAME > /etc/hostname
-sed -i "s/ghost/$INPUT_HOSTNAME/g" /etc/hosts
