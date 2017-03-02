@@ -6,7 +6,7 @@
         name="Adobe AIR"
         revision="%version%">
 
-        <variable name="version" value="23.0.0.257" />
+        <variable name="version" value="24.0.0.180" />
 
         <check type="uninstall" condition="versionequalto" path="Adobe AIR" value="%version%" />
 
@@ -15,7 +15,8 @@
         <!-- Disable Automatic Update -->
         <install cmd='REG ADD "HKLM\SOFTWARE\Policies\Adobe\AIR" /v UpdateDisabled /d 1 /f /t REG_DWORD' />
 
-        <upgrade include="remove" />
+        <!-- we MUST first uninstall using previous installer (we can't include remove here) -->
+        <upgrade include='msiexec /qb! /uninstall {07525A0D4-36B0-4434-ACF9-93A1F150BB12}'><exit code="any" /></upgrade><!-- v23.0.0.257 -->
         <upgrade include="intall" />
 
         <remove cmd='"%SOFTWARE%\adobeair\AdobeAIRInstaller.exe" -uninstall' />
