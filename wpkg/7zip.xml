@@ -21,5 +21,5 @@
 
         <remove cmd='wmic product where "name like &apos;7-Zip%%&apos;" call uninstall' /> 
     </package>
-	
+
 </packages>
