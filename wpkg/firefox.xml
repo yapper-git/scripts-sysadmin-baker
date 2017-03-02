@@ -6,7 +6,7 @@
         name="Mozilla Firefox"
         revision="%version%">
 
-        <variable name="version" value="50.1.0" />
+        <variable name="version" value="51.0.1" />
         <variable name="architecture" value="x86" />
         <variable name="locale" value="fr" />
 
