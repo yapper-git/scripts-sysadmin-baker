@@ -2,8 +2,8 @@
 <packages>
 
     <package
-        id="libreoffice" 
-        name="LibreOffice" 
+        id="libreoffice"
+        name="LibreOffice"
         revision="%version%">
 
         <variable name="version" value="5.1.5.2" />

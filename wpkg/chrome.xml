@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
-<!-- 
+
+<!--
     we use enterprise Chrome installer, which makes sane choices for most things
     the installer will run successfully whilst Chrome is running, installing to new_chrome.exe
     when the last running instance of Chrome exits, then:
     chrome.exe is renamed to old_chrome.exe
     new_chrome.exe is renamed to chrome.exe
- 
+
     chrome installer log is at
     %temp%\chrome_installer.log
 -->
- 
+
 <packages>
- 
-    <package 
+
+    <package
         id="chrome"
         name="Google Chrome"
         revision="%version%">
@@ -22,12 +22,12 @@
 
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Google\Chrome\Application" architecture="x86" />
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Google\Chrome\Application" architecture="x64" />
-        
+
         <!-- check the version no. to check the package state -->
         <check type="logical" condition="or">
             <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\chrome.exe"     value="%version%" />
             <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\new_chrome.exe" value="%version%" />
-        </check> 
+        </check>
 
         <!-- install the software, fails if .msi is renamed -->
         <install cmd='msiexec /qn /norestart /i "%SOFTWARE%\chrome\GoogleChromeStandaloneEnterprise.msi"' />

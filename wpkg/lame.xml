@@ -17,5 +17,5 @@
         <remove timeout="300" cmd='%PROGRAMFILES%\Lame for Audacity\unins000.exe /verysilent' architecture="x86" />
         <remove timeout="300" cmd='%PROGRAMFILES(x86)%\Lame for Audacity\unins000.exe /verysilent' architecture="x64" />
     </package>
-	
+
 </packages>

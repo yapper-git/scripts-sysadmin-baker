@@ -15,7 +15,7 @@
 
         <upgrade include="install" />
 
-        <remove cmd='msiexec /qn /x {EEB82240-4DBD-47C3-AC22-8A7504DEAC6E}' /> 
+        <remove cmd='msiexec /qn /x {EEB82240-4DBD-47C3-AC22-8A7504DEAC6E}' />
     </package>
 
 </packages>
