@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="Creation_compte_local"
+        name="Création de compte local avec définition du mot de passe"
+        revision="1"
+        execute="once">
+
+        <variable name="login" value="prof" />
+        <variable name="pass" value="prof" />
+
+        <!-- création du compte défini au dessus avec mot de passe defini au dessus -->
+        <install cmd='%COMSPEC% /C net user %login% %pass% /add'><exit code="2"/></install>
+        <!-- le mot de passe ne doit pas être changé et compte actif -->
+        <install cmd='%COMSPEC% /C net user %login% /passwordchg:no /active:yes /expires:never'/>
+        <!-- Le mot de passe n'expire jamais-->
+        <install cmd="%COMSPEC% /C WMIC USERACCOUNT WHERE &quot;Name='%login%'&quot; SET PasswordExpires=FALSE"/>
+
+        <upgrade include="remove"/>
+        <upgrade include="install"/>
+
+        <downgrade include="upgrade"/>
+
+        <remove cmd='%COMSPEC% /C net user %login% /DELETE '><exit code="2"/></remove>
+    </package>
+
+</packages>
