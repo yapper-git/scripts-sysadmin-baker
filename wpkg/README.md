@@ -8,6 +8,7 @@
     [Download](https://wpkg.org/Download),
     [Silent Installers](https://wpkg.org/Category:Silent_Installers)
 - [wpkg.ac-creteil.fr](http://wpkg.ac-creteil.fr/)
+- [rezotice.ac-lyon.fr](http://rezotice.ac-lyon.fr/fluxbb/viewforum.php?id=21&ticket=)
 - [Silently drop a package](http://wpkg-users.wpkg.narkive.com/oXCMUddm/silently-drop-a-package)
 
 ## En ligne de commandes
