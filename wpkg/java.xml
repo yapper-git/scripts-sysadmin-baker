@@ -9,7 +9,7 @@
         priority="20">
 
         <variable name="updatever" value="08" />
-        <variable name="shortupdatever" value="111" />
+        <variable name="shortupdatever" value="121" />
         <variable name="prevshortupdatever" value="111" /> <!--Previous Version-->
         <variable name="version" value="8.0.%shortupdatever%" />
 
