@@ -16,7 +16,7 @@ fi
 
 # Download the Adobe Air and Scratch files
 wget -O AdobeAIRInstaller.bin http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
-wget -O Scratch.air https://scratch.mit.edu/scratchr2/static/sa/Scratch-451.air
+wget -O Scratch.air https://scratch.mit.edu/scratchr2/static/sa/Scratch-454.air
 
 # Install dependencies
 apt-get -y install libxt6:i386 libnspr4-0d:i386 libgtk2.0-0:i386 libstdc++6:i386 libnss3-1d:i386 libnss-mdns:i386 libxml2:i386 libxslt1.1:i386 libcanberra-gtk-module:i386 gtk2-engines-murrine:i386 libgnome-keyring0:i386 libxaw7
