@@ -7,6 +7,8 @@ proxy_env_noproxy="localhost,127.0.0.0/8,172.16.0.0/16,192.168.0.0/16"
 
 #Paramétrage des paramètres Proxy pour Gnome
 #######################################################
+gsettings set org.gnome.system.proxy autoconfig-url "$proxy_def_autourl"
+gsettings set org.gnome.system.proxy mode 'auto'
 echo "[org.gnome.system.proxy]
 mode='auto'
 autoconfig-url=$proxy_def_autourl" >> /usr/share/glib-2.0/schemas/my-defaults.gschema.override
