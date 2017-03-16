@@ -5,13 +5,17 @@ proxy_def_ip="172.16.0.1"
 proxy_def_port="3128"
 proxy_env_noproxy="localhost,127.0.0.0/8,172.16.0.0/16,192.168.0.0/16"
 
+# Run using sudo, of course
+if [ "$UID" -ne "0" ]; then
+    echo "Il faut être root pour éxecuter ce script. ==> sudo" 1>&2
+    exit 1
+fi
+
 #Paramétrage des paramètres Proxy pour Gnome
 #######################################################
-gsettings set org.gnome.system.proxy autoconfig-url "$proxy_def_autourl"
-gsettings set org.gnome.system.proxy mode 'auto'
 echo "[org.gnome.system.proxy]
 mode='auto'
-autoconfig-url=$proxy_def_autourl" >> /usr/share/glib-2.0/schemas/my-defaults.gschema.override
+autoconfig-url='$proxy_def_autourl'" >> /usr/share/glib-2.0/schemas/my-defaults.gschema.override
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 #Paramétrage du Proxy pour le système
