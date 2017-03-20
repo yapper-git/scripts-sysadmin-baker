@@ -1,9 +1,10 @@
 #!/bin/bash
 
-proxy_def_autourl="http://wpad.proxyamon.local/wpad.dat"
-proxy_def_ip="172.16.0.1"
-proxy_def_port="3128"
-proxy_env_noproxy="localhost,127.0.0.0/8,172.16.0.0/16,192.168.0.0/16"
+PROXY_AUTO="http://wpad.proxyamon.local/wpad.dat"
+PROXY_IP="172.16.0.1"
+PROXY_PORT="3128"
+PROXY_GNOME_NOPROXY="['localhost', '127.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']"
+PROXY_ENV_NOPROXY="localhost,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 
 # Run using sudo, of course
 if [ "$UID" -ne "0" ]; then
@@ -14,22 +15,30 @@ fi
 #Paramétrage des paramètres Proxy pour Gnome
 #######################################################
 echo "[org.gnome.system.proxy]
-mode='auto'
-autoconfig-url='$proxy_def_autourl'" >> /usr/share/glib-2.0/schemas/my-defaults.gschema.override
+mode='manual'
+use-same-proxy=true
+ignore-hosts=$PROXY_GNOME_NOPROXY
+[org.gnome.system.proxy.http]
+host='$PROXY_IP'
+port=$PROXY_PORT
+[org.gnome.system.proxy.https]
+host='$PROXY_IP'
+port=$PROXY_PORT
+" >> /usr/share/glib-2.0/schemas/my-defaults.gschema.override
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 #Paramétrage du Proxy pour le système
 ######################################################################
-echo "http_proxy=http://$ip_proxy:$port_proxy/
-https_proxy=http://$ip_proxy:$port_proxy/
-ftp_proxy=http://$ip_proxy:$port_proxy/
-no_proxy=\"$proxy_env_noproxy\"" >> /etc/environment
+echo "http_proxy=http://$PROXY_IP:$PROXY_PORT/
+https_proxy=http://$PROXY_IP:$PROXY_PORT/
+ftp_proxy=http://$PROXY_IP:$PROXY_PORT/
+no_proxy=\"$PROXY_ENV_NOPROXY\"" >> /etc/environment
 
 #Paramétrage du Proxy pour apt
 ######################################################################
-echo "Acquire::http::proxy \"http://$ip_proxy:$port_proxy/\";
-Acquire::https::proxy \"https://$ip_proxy:$port_proxy/\";
-Acquire::ftp::proxy \"ftp://$ip_proxy:$port_proxy/\";" > /etc/apt/apt.conf.d/20proxy
+echo "Acquire::http::proxy \"http://$PROXY_IP:$PROXY_PORT/\";
+Acquire::https::proxy \"https://$PROXY_IP:$PROXY_PORT/\";
+Acquire::ftp::proxy \"ftp://$PROXY_IP:$PROXY_PORT/\";" > /etc/apt/apt.conf.d/20proxy
 
 #Permettre d'utiliser la commande add-apt-repository derrière un Proxy
 ######################################################################
