@@ -3,36 +3,38 @@
 
     <package
         id="firefox"
-        name="Mozilla Firefox"
+        name="Mozilla Firefox ESR"
         revision="%version%">
 
-        <variable name="version" value="51.0.1" />
-        <variable name="architecture" value="x86" />
+        <variable name="version" value="52.0.2" />
         <variable name="locale" value="fr" />
+        <variable architecture="x86" name="architecture" value="x86" />
+        <variable architecture="x64" name="architecture" value="x64" />
 
-        <check type="uninstall" condition="exists" path="Mozilla Firefox %version% (%architecture% %locale%)" />
+        <check type="uninstall" condition="exists" path="Mozilla Firefox %version% ESR (%architecture% %locale%)" />
 
+        <!-- Close Firefox (if running) -->
         <install cmd="taskkill /F /IM Firefox.exe">
             <exit code="0" />
-            <exit code="-1073741515" />
+            <exit code="1" />
             <exit code="128" />
         </install>
-
-        <install cmd='"%SOFTWARE%\firefox\Firefox Setup %version%.exe" -ms' />
-        <!-- Make Firefox the Default Browser -->
-        <install architecture="x86" cmd='%ComSpec% /c "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" /SetAsDefaultAppGlobal' ><exit code="2" /></install>
-        <install architecture="x64" cmd='%ComSpec% /c "%PROGRAMFILES(x86)%\Mozilla Firefox\uninstall\helper.exe" /SetAsDefaultAppGlobal' ><exit code="2" /></install>
+        <!-- Remove Firefox (default or ESR) if already installed -->
+        <install cmd='%COMSPEC% /C if exist "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" -ms' />
+        <install cmd='%COMSPEC% /C if exist "%PROGRAMFILES(x86)%\Mozilla Firefox\uninstall\helper.exe" "%PROGRAMFILES(x86)%\Mozilla Firefox\uninstall\helper.exe" -ms' />
+        <!-- Install Firefox silently -->
+        <install cmd='"%SOFTWARE%\firefox\Firefox Setup %version%esr-%architecture%.exe" -ms' />
+        <!-- Set as default brower -->
+        <install cmd='"%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" /SetAsDefaultAppGlobal' ><exit code="2" /></install>
 
         <upgrade include="install" />
 
         <remove cmd="taskkill /F /IM Firefox.exe">
             <exit code="0" />
             <exit code="128" />
-            <exit code="-1073741515" />
+            <exit code="1" />
         </remove>
-        <!-- for 32bit and 64bit System -->
-        <remove cmd='%COMSPEC% /C if exist "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" -ms' />
-        <remove cmd='%COMSPEC% /C if exist "%PROGRAMFILES(x86)%\Mozilla Firefox\uninstall\helper.exe" "%PROGRAMFILES(x86)%\Mozilla Firefox\uninstall\helper.exe" -ms' />
+        <remove cmd='"%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" -ms' />
     </package>
 
 </packages>
