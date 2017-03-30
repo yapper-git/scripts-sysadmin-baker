@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+    <package
+        id="xmind"
+        name="XMind : logiciel de carte heuristique"
+        revision="%version%">
+
+        <variable name="version" value="3.7.1" />
+
+        <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\XMind" architecture="x86"/>
+        <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\XMind" architecture="x64"/>
+
+        <depends package-id="java" />
+
+        <check type="uninstall" condition="exists" path="XMind 8 Update 1 (v%version%)" />
+
+        <install cmd='"%SOFTWARE%\xmind\xmind-8-update1-windows.exe" /VERYSILENT'/>
+
+        <upgrade include='install' />
+
+        <remove cmd='"%PKG_DESTINATION%\unins000.exe" /SILENT' />
+        <remove cmd='%COMSPEC% /C rmdir /S /Q "%PKG_DESTINATION%"' />
+    </package>
+
+</packages>
