@@ -6,7 +6,7 @@
         name="GNU Image Manipulation Program (GIMP)"
         revision="%version%">
 
-        <variable name="version" value="2.8.20" />
+        <variable name="version" value="2.8.22" />
 
         <check type="uninstall" condition="exists" path="GIMP %version%" />
 
