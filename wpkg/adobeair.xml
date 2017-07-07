@@ -6,7 +6,7 @@
         name="Adobe AIR"
         revision="%version%">
 
-        <variable name="version" value="24.0.0.180" />
+        <variable name="version" value="26.0.0.118" />
 
         <check type="uninstall" condition="versionequalto" path="Adobe AIR" value="%version%" />
 

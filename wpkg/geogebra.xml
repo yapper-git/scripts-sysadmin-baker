@@ -6,8 +6,8 @@
         name="GeoGebra"
         revision="%version%">
 
-        <variable name="version" value="5.0.341.0" />
-        <variable name="PKG_VERSION" value="5-0-341-0" />
+        <variable name="version" value="5.0.372.0" />
+        <variable name="PKG_VERSION" value="5-0-372-0" />
         <!-- Download MSI from http://download.geogebra.org/installers/5.0/ -->
         <variable name="PKG_MSI" value="%SOFTWARE%\geogebra\GeoGebra-Windows-Installer-%PKG_VERSION%.msi" />
 
@@ -24,7 +24,7 @@
         <upgrade include="remove" /><!-- use remove because it may works for all 5.0.X versions -->
         <upgrade include="install" />
 
-        <remove cmd='msiexec /qb! /uninstall {D44FFF47-306C-4198-9899-832C1DAA4566}' /><!-- works for v278, 280, 282, 290, 332 -->
+        <remove cmd='msiexec /qb! /uninstall {D44FFF47-306C-4198-9899-832C1DAA4566}' /><!-- works for v278, 280, 282, 290, 332, 372 -->
     </package>
 
 </packages>
