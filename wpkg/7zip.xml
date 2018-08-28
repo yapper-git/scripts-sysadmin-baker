@@ -6,8 +6,8 @@
         name="7-Zip"
         revision="%version%">
 
-        <variable name="version" value="16.04" />
-        <variable name="filever" value="1604" />
+        <variable name="version" value="18.05" />
+        <variable name="filever" value="1805" />
 
         <check type="uninstall" condition="exists" path="7-Zip %version%" architecture="x86" />
         <check type="uninstall" condition="exists" path="7-Zip %version% (x64 edition)" architecture="x64" />
