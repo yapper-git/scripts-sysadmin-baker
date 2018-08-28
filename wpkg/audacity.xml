@@ -6,7 +6,7 @@
         name="Audacity"
         revision="%version%">
 
-        <variable name="version" value="2.1.3" />
+        <variable name="version" value="2.2.2" />
 
         <!--<depends package-id="vc-runtime-2008" />-->
 
@@ -14,10 +14,11 @@
 
         <install cmd='%SOFTWARE%\audacity\audacity-win-%version%.exe /sp- /verysilent /norestart' />
 
+        <upgrade include="remove" />
         <upgrade include="install" />
 
         <remove timeout="300" cmd='%PROGRAMFILES%\Audacity\unins000.exe /verysilent' architecture="x86" />
         <remove timeout="300" cmd='%PROGRAMFILES(x86)%\Audacity\unins000.exe /verysilent' architecture="x64" />
     </package>
-	
+
 </packages>
