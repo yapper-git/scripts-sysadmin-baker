@@ -6,7 +6,7 @@
         name="VideoLAN Client"
         revision="%version%">
 
-        <variable name="version" value="2.2.6" />
+        <variable name="version" value="3.0.3" />
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\VideoLAN" />
 
         <check type='uninstall' condition='versionequalto' path='VLC media player' value='%version%' />
