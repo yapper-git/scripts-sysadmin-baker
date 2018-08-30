@@ -18,7 +18,7 @@
         name="Google Chrome"
         revision="%version%">
 
-        <variable name="version" value="59.0.3071.115" />
+        <variable name="version" value="68.0.3440.106" />
 
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Google\Chrome\Application" architecture="x86" />
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Google\Chrome\Application" architecture="x64" />
@@ -30,7 +30,8 @@
         </check>
 
         <!-- install the software, fails if .msi is renamed -->
-        <install cmd='msiexec /qn /norestart /i "%SOFTWARE%\chrome\GoogleChromeStandaloneEnterprise.msi"' />
+        <install cmd='msiexec /qn /norestart /i "%SOFTWARE%\chrome\googlechromestandaloneenterprise.msi"' architecture="x86" />
+        <install cmd='msiexec /qn /norestart /i "%SOFTWARE%\chrome\googlechromestandaloneenterprise64.msi"' architecture="x64" />
         <!-- remove the desktop icon -->
         <install cmd='%COMSPEC% /c if exist "%public%\Desktop\Google Chrome.lnk" del "%public%\Desktop\Google Chrome.lnk"' />
         <!-- turn off AutoUpdate -->
