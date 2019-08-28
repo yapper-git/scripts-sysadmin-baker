@@ -6,7 +6,7 @@
         name="Notepad++"
         revision="%version%">
 
-        <variable name="version" value="7.5.8" />
+        <variable name="version" value="7.7.1" />
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Notepad++" />
 
         <check type="file" condition="versionequalto" path="%PKG_DESTINATION%\notepad++.exe" value="%version%" />
