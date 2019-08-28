@@ -6,8 +6,8 @@
         name="GeoGebra"
         revision="%version%">
 
-        <variable name="version" value="5.0.488.0" />
-        <variable name="PKG_VERSION" value="5-0-488-0" />
+        <variable name="version" value="5.0.557.0" />
+        <variable name="PKG_VERSION" value="5-0-557-0" />
         <!-- Download MSI from http://download.geogebra.org/installers/5.0/ -->
         <variable name="PKG_MSI" value="%SOFTWARE%\geogebra\GeoGebra-Windows-Installer-%PKG_VERSION%.msi" />
 
