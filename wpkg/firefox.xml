@@ -6,12 +6,12 @@
         name="Mozilla Firefox ESR"
         revision="%version%">
 
-        <variable name="version" value="60.1.0" />
+        <variable name="version" value="68.0.2" />
         <variable name="locale" value="fr" />
         <variable architecture="x86" name="architecture" value="x86" />
         <variable architecture="x64" name="architecture" value="x64" />
 
-        <check type="uninstall" condition="exists" path="Mozilla Firefox %version% ESR (%architecture% %locale%)" />
+        <check type="uninstall" condition="versiongreaterorequal" path="Mozilla Firefox .* ESR .*" value="%version%" />
 
         <!-- Close Firefox (if running) -->
         <install cmd="taskkill /F /IM Firefox.exe">
