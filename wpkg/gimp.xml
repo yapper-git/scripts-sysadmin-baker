@@ -6,7 +6,7 @@
         name="GNU Image Manipulation Program (GIMP)"
         revision="%version%">
 
-        <variable name="version" value="2.10.12" />
+        <variable name="version" value="2.10.18" />
 
         <check type="uninstall" condition="exists" path="GIMP %version%" />
 
@@ -15,6 +15,7 @@
         <upgrade include="install" />
 
         <remove cmd='"%PROGRAMFILES%\GIMP 2\uninst\unins000.exe" /VERYSILENT /NORESTART'><exit code="1" /></remove>
+        <remove cmd='"%PROGRAMFILES%\GIMP 2\uninst\unins001.exe" /VERYSILENT /NORESTART'><exit code="1" /></remove>
     </package>
 
 </packages>
