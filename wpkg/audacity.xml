@@ -6,7 +6,7 @@
         name="Audacity"
         revision="%version%">
 
-        <variable name="version" value="2.3.2" />
+        <variable name="version" value="2.3.3" />
 
         <!--<depends package-id="vc-runtime-2008" />-->
 
