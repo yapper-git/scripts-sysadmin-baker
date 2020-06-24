@@ -6,7 +6,7 @@
         name="Mozilla Firefox ESR"
         revision="%version%">
 
-        <variable name="version" value="68.5.0" />
+        <variable name="version" value="68.9.0" />
         <variable name="locale" value="fr" />
         <variable architecture="x86" name="architecture" value="x86" />
         <variable architecture="x64" name="architecture" value="x64" />
