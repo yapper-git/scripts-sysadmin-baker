@@ -6,7 +6,7 @@
         name="Adobe AIR"
         revision="%version%">
 
-        <variable name="version" value="30.0.0.107" />
+        <variable name="version" value="32.0.0.125" />
 
         <check type="uninstall" condition="versionequalto" path="Adobe AIR" value="%version%" />
 
@@ -18,6 +18,8 @@
         <!-- we MUST first uninstall using previous installer (we can't include remove here) -->
         <upgrade cmd='msiexec /qb! /uninstall {0725A0D4-36B0-4434-ACF9-93A1F150BB12}'><exit code="any" /></upgrade><!-- v23.0.0.257 -->
         <upgrade cmd='msiexec /qb! /uninstall {FA07987F-F342-4C74-B632-FE1724FE2959}'><exit code="any" /></upgrade><!-- v26.0.0.118 -->
+        <upgrade cmd='msiexec /qb! /uninstall {CE25DBD3-FCA7-4E77-9A60-F77BE12FC4BA}'><exit code="any" /></upgrade><!-- v30.0.0.107 -->
+        <upgrade cmd='msiexec /qb! /uninstall {10E33ABF-D7FB-4F47-900A-7973854AB45A}'><exit code="any" /></upgrade><!-- v32.0.0.125 -->
         <upgrade include="install" />
 
         <remove cmd='"%SOFTWARE%\adobeair\AdobeAIRInstaller.exe" -uninstall' />
