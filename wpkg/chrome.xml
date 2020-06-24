@@ -18,7 +18,7 @@
         name="Google Chrome"
         revision="%version%">
 
-        <variable name="version" value="80.0.3987.132" />
+        <variable name="version" value="83.0.4103.116" />
 
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Google\Chrome\Application" architecture="x86" />
         <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Google\Chrome\Application" architecture="x64" />
